@@ -3,6 +3,7 @@ import { FontIcon, FontIconName } from 'components/common/FontIcon';
 import history from 'utils/history';
 import { TextInput } from 'components/common/TextInput';
 import { PanelChange } from 'components/layout/PanelChange';
+import { useTranslation } from 'react-i18next';
 import { ExchangeKeys } from 'utils/getExchangeAddress';
 import styles from './styles.module.scss';
 import { flowConfig, FlowEnum, InvestmentFlow, RoutesToFlowTypes } from 'constants/flowConfig';
@@ -18,6 +19,7 @@ type InvestMarketProps = {
 };
 
 export const InvestMarket: FC<InvestMarketProps> = ({ handleStart, handleStop }) => {
+	const { t } = useTranslation();
 	const state = useShallowSelector(selectMain);
 	const userStreams = useShallowSelector(selectUserStreams);
 	const { balances, isLoading, coingeckoPrices } = state;
@@ -159,7 +161,7 @@ export const InvestMarket: FC<InvestMarketProps> = ({ handleStart, handleStop })
 				</div>
 				<TextInput
 					value={search}
-					placeholder={'Search by Name'}
+					placeholder={t('Search by Name')}
 					onChange={handleSearch}
 					className={styles.input}
 					containerClassName={styles.container_input}
@@ -168,18 +170,18 @@ export const InvestMarket: FC<InvestMarketProps> = ({ handleStart, handleStop })
 			</div>
 
 			<div className={styles.headers}>
-				<div className={styles.market}>{'Stream Market'}</div>
-				<div className={styles.stream}>{'Your Stream'}</div>
-				<div className={styles.balances}>{'Your Balances'}</div>
-				<div className={styles.streaming}>{'Total Value Streaming'}</div>
-				<div className={styles.ends}>{''}</div>
+				<div className={styles.market}>{t('Stream Market')}</div>
+				<div className={styles.stream}>{t('Your Stream')}</div>
+				<div className={styles.balances}>{t('Your Balances')}</div>
+				<div className={styles.streaming}>{t('Total Value Streaming')}</div>
+				<div className={styles.ends}>{t('')}</div>
 			</div>
 			<div className={styles.content}>
 				{filteredList &&
 					filteredList.map((element, idx) => (
 						<div className={styles.panel} key={`${element.coinA}-${element.coinB}-${element.flowKey}`}>
 							<PanelChange
-								placeholder={'Input Rate'}
+								placeholder={t('Input Rate')}
 								onClickStart={handleStart(element)}
 								onClickStop={handleStop(element)}
 								coinA={element.coinA}
@@ -217,7 +219,7 @@ export const InvestMarket: FC<InvestMarketProps> = ({ handleStart, handleStop })
 				<div className={styles.empty_state}>
 					<FontIcon name={FontIconName.Search} size={30} />
 					<span className={styles.empty_state_text}>
-						<div>{'No results found'}</div>
+						<div>{t('No results found')}</div>
 					</span>
 				</div>
 			)}

@@ -7,7 +7,6 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"lint": "eslint . --ext .ts,.tsx --fix",
 		"tsc": "tsc --noEmit",
 		"fontello": "bash ./fontello.sh",
 		"fontello:open": "fontello-cli --config src/assets/fonts/fontello/config.json open",
@@ -15,10 +14,7 @@
 		"prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts,css,html}\""
 	},
 	"engines": {
-		"node": "16"
-	},
-	"eslintConfig": {
-		"extends": "react-app"
+		"node": "18.16"
 	},
 	"browserslist": {
 		"production": [
@@ -43,13 +39,13 @@
 		"@makerdao/multicall": "^0.12.0",
 		"@mui/icons-material": "^5.8.0",
 		"@mui/lab": "^5.0.0-alpha.83",
-		"@mui/material": "^5.12.2",
+		"@mui/material": "^5.5.0",
 		"@mui/utils": "^5.8.0",
 		"@popperjs/core": "^2.11.5",
 		"@sentry/react": "^6.18.0",
 		"@sentry/tracing": "^6.18.0",
 		"@superfluid-finance/sdk-core": "^0.4.2",
-		"@toruslabs/torus-embed": "^1.20.4",
+		"@toruslabs/torus-embed": "^1.41.2",
 		"@truffle/contract": "^4.6.15",
 		"@types/big.js": "^6.1.2",
 		"@walletconnect/web3-provider": "^1.7.8",
@@ -61,15 +57,16 @@
 		"cross-env": "7.0.3",
 		"date-fns": "^2.28.0",
 		"dayjs": "^1.11.2",
-		"eslint-config-react-app": "6",
 		"ethers": "^5.5.4",
 		"graphql": "^16.3.0",
+		"i18next": "^21.3.2",
 		"javascript-time-ago": "^2.3.11",
 		"ramda": "^0.27.1",
 		"react": "^17.0.2",
 		"react-cookie": "^4.1.1",
 		"react-dom": "^17.0.2",
 		"react-flow-renderer": "^10.3.1",
+		"react-i18next": "^11.18.1",
 		"react-loading-skeleton": "^3.1.0",
 		"react-modal": "3.12.1",
 		"react-popper": "^2.3.0",
@@ -101,16 +98,10 @@
 		"@types/react-modal": "3.12.0",
 		"@types/react-router-dom": "5.3.3",
 		"@types/scroll-lock": "^2.1.0",
-		"@typescript-eslint/eslint-plugin": "5.25.0",
-		"eslint-config-airbnb-typescript": "12.3.1",
-		"eslint-plugin-import": "2.27.5",
-		"eslint-plugin-jsx-a11y": "6.7.1",
-		"eslint-plugin-react": "7.20.3",
-		"eslint-plugin-react-hooks": "4.6.0",
 		"fontello-cli": "0.6.2",
 		"husky": ">=6",
 		"lint-staged": "12.3.4",
-		"node-sass": "^6.0.0",
+		"node-sass": "^8.0.0",
 		"prettier": "^2.6.2"
 	},
 	"resolutions": {

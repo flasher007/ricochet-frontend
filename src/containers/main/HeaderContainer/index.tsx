@@ -5,6 +5,7 @@ import { UserSettings } from 'components/layout/UserSettings';
 import Link from 'components/common/Link';
 import { MobileMenu } from 'components/layout/MobileMenu';
 import { Hamburger } from 'components/Hamburger';
+import { useTranslation } from 'i18n';
 import styles from './styles.module.scss';
 import logo from '../../../assets/images/logo.svg';
 import { useShallowSelector } from 'hooks/useShallowSelector';
@@ -17,6 +18,7 @@ interface IProps {
 
 export const HeaderContainer: FC<IProps> = ({ address, balance }) => {
 	const location = useLocation();
+	const { t } = useTranslation();
 	const { aggregatedRICRewards } = useShallowSelector(selectMain);
 
 	const [open, setOpen] = useState(false);
@@ -30,49 +32,49 @@ export const HeaderContainer: FC<IProps> = ({ address, balance }) => {
 			case Routes.Wallet:
 				return (
 					<>
-						<div>{'Wallet'}</div>
+						<div>{t('Wallet')}</div>
 					</>
 				);
 			case Routes.Invest:
 				return (
 					<>
-						<div>{'Invest'}</div>
+						<div>{t('Invest')}</div>
 					</>
 				);
 			case Routes.Distributions:
 				return (
 					<>
-						<div>{'Distributions'}</div>
+						<div>{t('Distributions')}</div>
 					</>
 				);
 			case Routes.Banks:
 				return (
 					<>
-						<div>{'Banks'}</div>
+						<div>{t('Banks')}</div>
 					</>
 				);
 			case Routes.Vaults:
 				return (
 					<>
-						<div>{'Vaults'}</div>
+						<div>{t('Vaults')}</div>
 					</>
 				);
 			case Routes.InvestLaunchpads:
 				return (
 					<>
-						<div>{'Launchpad'}</div>
+						<div>{t('Launchpad')}</div>
 					</>
 				);
 			case Routes.RecentActivity:
 				return (
 					<>
-						<div>{'Activity'}</div>
+						<div>{t('Activity')}</div>
 					</>
 				);
 			case Routes.Refer:
 				return (
 					<>
-						<div>{'Refer'}</div>
+						<div>{t('Refer')}</div>
 					</>
 				);
 			default:
@@ -93,10 +95,10 @@ export const HeaderContainer: FC<IProps> = ({ address, balance }) => {
 
 					<div className={styles.links}>
 						<Link to={Routes.Invest} className={styles.dca_link} activeClassName={styles.active}>
-							<div>{'Invest'}</div>
+							<div>{t('Invest')}</div>
 						</Link>
 						<Link to={Routes.Wallet} className={styles.upgrade_link} activeClassName={styles.active}>
-							<div>{'Wallet'}</div>
+							<div>{t('Wallet')}</div>
 						</Link>
 					</div>
 

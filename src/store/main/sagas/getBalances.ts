@@ -18,12 +18,12 @@ export function* getBalances(address: string) {
 				el,
 				(result: string) => {
 					if (el === WBTCAddress) {
-						return fromWei(result, 8);
+						return fromWei(result || '0', 8);
 					}
 					if (el === USDCAddress) {
-						return fromWei(result, 6);
+						return fromWei(result || '0', 6);
 					}
-					return fromWei(result, 18);
+					return fromWei(result || '0', 18);
 				},
 			],
 		],
@@ -37,7 +37,7 @@ export function* getBalances(address: string) {
 	});
 
 	// Edit matic balance
-	balances[WMATICAddress] = fromWei(yield web3.eth.getBalance(address), 18);
+	balances[WMATICAddress] = fromWei(yield web3.eth.getBalance(address) || '0', 18);
 
 	yield put(mainSetState({ balances }));
 }
