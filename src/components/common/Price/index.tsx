@@ -40,7 +40,7 @@ const getPrice = async (web3: Web3, coinB: any): Promise<string> => {
 	}
 	const normalizedPrice = price && typeof price === 'string' ? price : price.toString();
 
-	return fromWei(normalizedPrice, 18);
+	return fromWei(normalizedPrice||'0', 18);
 };
 
 // returns inline element, className or style can be directly applied to Price
@@ -65,7 +65,7 @@ export default function Price({ flowType, coinA, coinB }: Props) {
 					setLaunchPadPrice(p);
 				}
 			})
-			.catch((error: string) => console.log(error));
+			.catch((error: string) => console.log('hui',error));
 
 		querySushiPoolPrices(sushiSwapPools[`${coinA}-${coinB}`])
 			.then(({ data }) => {

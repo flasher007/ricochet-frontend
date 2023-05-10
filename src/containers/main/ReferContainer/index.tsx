@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { TextInput } from 'components/common/TextInput';
+import { useLang } from 'hooks/useLang';
 import { useShallowSelector } from 'hooks/useShallowSelector';
 import { selectMain } from 'store/main/selectors';
 import { rexReferralAddress } from 'constants/polygon_config';
@@ -15,6 +16,7 @@ interface IProps {}
 const AFFILIATE_URL_PREFIX = 'app.ricochet.exchange/#/ref/';
 
 export const ReferContainer: React.FC<IProps> = () => {
+	const { t } = useLang();
 	const { address, web3 } = useShallowSelector(selectMain);
 	const contract = getContract(rexReferralAddress, referralABI, web3);
 
@@ -136,7 +138,7 @@ export const ReferContainer: React.FC<IProps> = () => {
 	if (!address) {
 		return (
 			<div className={styles.container_explain}>
-				{`You have to connect your wallet to be able to create referrals`}
+				{t('You have to connect your wallet to be able to create referrals')}
 			</div>
 		);
 	}
@@ -147,28 +149,27 @@ export const ReferContainer: React.FC<IProps> = () => {
 				<div>
 					{referredBy ? (
 						<span>
-							{'You have been referred with ❤️ by '}
+							{t('You have been referred with ❤️ by ')}
 							{referredBy}
 						</span>
 					) : (
-						<span>{"You haven't been referred by anyone. 🥒 Organic FTW!"}</span>
+						<span>{t("You haven't been referred by anyone. 🥒 Organic FTW!")}</span>
 					)}
 					<div className={styles.explainer_container}>
 						<p>
-							<strong>V0 BETA</strong> Ricochet Referral system is in BETA. Apply to refer your friends
-							and receive a % of fees that Ricochet Exchange charges. Becoming an affiliate currently
-							requires manual verification. Any links you register can stop working suddenly and without
-							any prior notice when we upgrade versions. We cannot guarantee that referrals will be
-							applied correctly.,
+							<strong>V0 BETA</strong>{' '}
+							{t(
+								'Ricochet Referral system is in BETA. Apply to refer your friends and receive a % of fees that Ricochet Exchange charges. Becoming an affiliate currently requires manual verification. Any links you register can stop working suddenly and without any prior notice when we upgrade versions. We cannot guarantee that referrals will be applied correctly.',
+							)}
 						</p>
 					</div>
 				</div>
 				{(status === AFFILIATE_STATUS.INACTIVE || status === AFFILIATE_STATUS.REGISTERING) && (
 					<div className={styles.input_wrap}>
-						<p>{'Customise your referral url'}</p>
+						<p>{t('Customise your referral url')}</p>
 						<TextInput
 							value={currentReferralId}
-							placeholder={'Your new referral id'}
+							placeholder={t('Your new referral id')}
 							onChange={handleReferralId}
 							className={styles.input}
 							dontBlockChar
@@ -177,7 +178,7 @@ export const ReferContainer: React.FC<IProps> = () => {
 						/>
 						<div className={styles.validation_errors}>
 							{validationErrors.map((each) => (
-								<p key={each}>{each}</p>
+								<p key={each}>{t(each)}</p>
 							))}
 						</div>
 						<div className={styles.register_wrap}>
@@ -189,7 +190,7 @@ export const ReferContainer: React.FC<IProps> = () => {
 								onClick={handleRegister}
 								className={styles.register}
 							>
-								{'Register'}
+								{t('Register')}
 							</ButtonNew>
 						</div>
 					</div>
@@ -198,7 +199,7 @@ export const ReferContainer: React.FC<IProps> = () => {
 				{status === AFFILIATE_STATUS.AWAITING_VERIFICATION && (
 					<div>
 						<p>
-							{'Awaiting verification. Come back later or ping us on our discord:'}
+							{t('Awaiting verification. Come back later or ping us on our discord:')}
 							<a className={styles.black} href={DISCORD_LINK} target="_blank" rel="noreferrer">
 								{DISCORD_LINK}
 							</a>

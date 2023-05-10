@@ -5,6 +5,7 @@ import { ApproveToken } from 'components/banks/ApproveToken';
 import { LoadingWrapper } from 'components/common/LoadingWrapper';
 import { EtherscanLink } from 'components/banks/EtherScanLink';
 import { Button } from 'components/common/Button';
+import { useTranslation } from 'react-i18next';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -33,6 +34,7 @@ export const Deposit: FC<Props> = ({
 	error,
 }) => {
 	const needsUnlock = +vaultData.depositAmount > +bank.collateralToken.unlockedAmount && !localApproved;
+	const { t } = useTranslation();
 
 	return (
 		<>
@@ -40,7 +42,9 @@ export const Deposit: FC<Props> = ({
 				<div className={styles.createVault_steps}>
 					<div className={styles.createVault_step}>
 						<p className={styles.text}>
-							{`${'How much'} ${vaultData.collateralToken} ${'do you want to lock up as collateral?'}`}
+							{`${t('How much')} ${vaultData.collateralToken} ${t(
+								'do you want to lock up as collateral?',
+							)}`}
 						</p>
 						<TextInput
 							name="depositAmount"
@@ -53,16 +57,21 @@ export const Deposit: FC<Props> = ({
 						{needsUnlock ? (
 							<>
 								<p className={styles.smalltxt}>
-									{'Please give allowance for your collateral to continue.'}
+									{t('Please give allowance for your collateral to continue.')}
 								</p>
 								<ApproveToken onApproveClick={onApproveClick} isLoadingApprove={isLoadingApprove} />
 							</>
 						) : null}
 					</div>
 					<div className={styles.createVault_submitter}>
-						<Button className={styles.button} disabled={needsUnlock} onClick={onSubmit} label={'Submit'} />
+						<Button
+							className={styles.button}
+							disabled={needsUnlock}
+							onClick={onSubmit}
+							label={t('Submit')}
+						/>
 						<p className={cx(styles.smalltxt, needsUnlock && styles.disabled)}>
-							{'Upon submitting, 1 transactions will be initiated.'}
+							{t('Upon submitting, 1 transactions will be initiated.')}
 						</p>
 					</div>
 				</div>

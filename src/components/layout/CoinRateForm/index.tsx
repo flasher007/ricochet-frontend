@@ -1,5 +1,6 @@
 import { TextInput } from 'components/common/TextInput';
 import React, { ChangeEvent, FC } from 'react';
+import { useTranslation } from 'i18n';
 import ReactTooltip from 'react-tooltip';
 import ButtonNew from '../../common/ButtonNew';
 import { Coin } from '../../../constants/coins';
@@ -34,6 +35,7 @@ export const CoinRateForm: FC<IProps> = ({
 	indexVal,
 	coinBalanceA,
 }) => {
+	const { t } = useTranslation();
 	// Security Deposit is 4 hours worth of stream, so (4*60*60)/(30*24*60*60) = 1/180
 	return (
 		<div className={styles.input_container}>
@@ -59,7 +61,7 @@ export const CoinRateForm: FC<IProps> = ({
 							disabled={isReadOnly || isLoading}
 							isLoading={isLoading}
 						>
-							{'Start'}/{'Edit'}
+							{t('Start')}/{t('Edit')}
 						</ButtonNew>
 					</span>
 				</div>
@@ -73,7 +75,7 @@ export const CoinRateForm: FC<IProps> = ({
 							disabled={isReadOnly || isLoading}
 							isLoading={isLoading}
 						>
-							{'Stop'}
+							{t('Stop')}
 						</ButtonNew>
 					)}
 				</div>

@@ -3,7 +3,7 @@ import WalletConnectProvider from '@walletconnect/web3-provider';
 import WalletLink from 'walletlink';
 import { SafeAppWeb3Modal } from '@gnosis.pm/safe-apps-web3modal';
 import Web3 from 'web3';
-import Torus from '@toruslabs/torus-embed';
+// import Torus from '@toruslabs/torus-embed';
 import { mainCheck, mainGetData, mainSetState } from '../actionCreators';
 import { modalHide, modalShow } from '../../modal/actionCreators';
 import { ModalType } from '../../modal/types';
@@ -29,14 +29,14 @@ export function* connectWeb3Modal(): any {
 					chainId: 137,
 				},
 			},
-			torus: {
-				package: Torus,
-				options: {
-					networkParams: {
-						chainId: 137,
-					},
-				},
-			},
+			// torus: {
+			// 	package: Torus,
+			// 	options: {
+			// 		networkParams: {
+			// 			chainId: 137,
+			// 		},
+			// 	},
+			// },
 			// "custom-gnosis": {
 			//   display: {
 			//     logo: "https://gnosis-safe.io/app/static/media/transition-logo.f4f66a24.gif?40",
